@@ -1,0 +1,55 @@
+
+**List of files:
+1)project.c
+2)README.txt
+3)Makefile
+
+**Instructions To Run The Code:
+
+In order to setup the environment to run the code
+----------------------------------------------------
+Run : make
+Run : ./project
+
+In order to clean the environment 
+-----------------------------------
+Run : make clean
+
+**About the project:
+
+*****	SEPARATING POINTS BY AXIS-PARALLEL LINES.		*****
+
+**INPUT: Set of n points in the two-dimensional plane, point i given by coordinates xi and yi. 
+		 No two points have the same x- or y-coordinate.
+**OUTPUT: Set S of vertical or horizontal lines, each given by the direction and one coordinate (where it intersects the axis), 
+		  such that any two points of the input are separated by a line of S.
+
+The algorithm follows a greedy method and assumes that all x and y coordinates are positive whole numbers.
+
+The code is 'point_sep.c', which takes a series of input files whose names are
+formated "instanceNN", where NN is 00 to 99. All the solutions are written out
+to a file whose name is formated "greedy_solutionNN", where NN corresponds to
+the number of the instance.
+
+The format of the solution file is as follows,
+
+	TOTAL-LINES
+	TYPE-OF-LINE CUTS-AXIS-AT
+	TYPE-OF-LINE CUTS-AXIS-AT
+	TYPE-OF-LINE CUTS-AXIS-AT
+
+**LOGIC:
+ Consider a graph G(V, E) where each node represents a point on the cartesian plane. Initialize the graph to be a
+ complete digraph and hence we get (n*(n-1)) connections(edges), where `n` is the number of points.
+
+ The maximum separations occur within a range if we draw a line in the middle,since we know that the largest subset of
+ pairs separable by a single line is exactly half of the points such that only a fraction of the edges remain.
+ Here the ranges are integral positions of points along x and y axis. Whenever a line comes between two points which are
+ still connected otherwise, disconnect them in the graph and add the line to solution set.This is repeated until no other
+ connections remain.
+ 
+**CONCLUSION:
+The algorithm returns a feasible solution that is better than the worst case solution, but not necessarily the best case,
+as the nature of greedy algorithms.
+
+
